@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Entities/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player_Manager.gd" type="Script" id=2]
+[ext_resource path="res://Entities/Rotation_Helper.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Menu/Stock_Menu2.tscn" type="PackedScene" id=4]
+
+[node name="Player" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+interpolated_camera = true
+
+[node name="Position3D" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.481, 0 )
+
+[node name="Rotation_Helper" parent="Position3D" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="Camera" parent="Position3D/Rotation_Helper" index="1"]
+cull_mask = 1048567
+
+[node name="Stock_Menu" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[editable path="Player"]
+
+[editable path="Position3D/Rotation_Helper"]
+
+[editable path="Stock_Menu"]
